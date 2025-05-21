@@ -24,9 +24,9 @@ class MAX4820 : public Component,
   void set_switch_state(uint8_t switch_id, bool state);
 
 protected:
-  InternalGPIOPin *reset_pin_{nullptr}
-  InternalGPIOPin *set_pin_{nullptr}
-  uint8_t sr_num_{1}
+  InternalGPIOPin *reset_pin_{nullptr};
+  InternalGPIOPin *set_pin_{nullptr};
+  uint8_t sr_num_{1};
 
   uint8_t states = 0;
 };
