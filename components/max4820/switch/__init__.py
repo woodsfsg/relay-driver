@@ -16,7 +16,7 @@ CONFIG_SCHEMA = (
   .extend(
       {
           cv.GenerateID(CONF_MAX4820_ID): cv.use(MAX4820),
-          cv.Required(CONF_SWITCH_OUTPUT): cv.intRange(min=0,max=7),
+          cv.Required(CONF_SWITCH_OUTPUT): cv.int_range(min=0, max=7),
       }
   )
   .extend(cv.COMPONENT_SCHEMA)
