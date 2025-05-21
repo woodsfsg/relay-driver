@@ -6,7 +6,7 @@ from esphome.const import (
   CONF_NUMBER,
 )
 
-from .. import max4820_ns MAX4820
+from .. import max4820_ns, MAX4820
 
 DEPENDENCIES = ["max4820"]
 
