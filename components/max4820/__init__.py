@@ -2,25 +2,19 @@ from esphome import pins
 import esphome.codegen as cg
 from esphome.components import spi
 import esphome.config_validation as cv
-from esphome.const import (
-    CONF_CLOCK_PIN,
-    CONF_DATA_PIN,
-    CONF_ID,
-    CONF_INVERTED,
-    CONF_NUMBER,
-    CONF_OUTPUT,
-)
+from esphome.const import CONF_ID
 
+DEPENDENCIES = ["spi"]
+AUTO_LOAD = ["switch"]
 MULTI_CONF = True
-
-max4820_ns = cg.esphome_ns.namespace("max4820")
-
-MAX4820 = max4820_ns.class_("MAX4820", cg.Component, spi.SPIDevice)
 
 CONF_MAX4820 = "max4820"
 CONF_SET_PIN = "set_pin"
 CONF_RESET_PIN = "reset_pin"
 CONF_SR_COUNT = "sr_count"
+
+max4820_ns = cg.esphome_ns.namespace("max4820")
+MAX4820 = max4820_ns.class_("MAX4820", cg.Component, spi.SPIDevice)
 
 CONFIG_SCHEMA = cv.Schema(
     {
