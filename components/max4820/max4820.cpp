@@ -13,6 +13,12 @@ float MAX4820::get_setup_priority() const { return setup_priority::HARDWARE; }
 void MAX4820::setup() {
   ESP_LOGCONFIG(TAG, "Setting up max4820");
   this->spi_setup();
+
+  this->states = 0;
+  
+  this->enable();
+  this->write(states, 8);
+  this->disable();
 }
 
 void MAX4820::dump_config() {
