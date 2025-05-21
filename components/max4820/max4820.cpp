@@ -26,6 +26,11 @@ bool MAX4820::get_switch_state(uint8_t switch_id) {
 
 void MAX4820::set_switch_state(uint8_t switch_id, bool state) {
   states = (states & (0xff ^ (0b1 << switch_id)) | ((state ? 0b1 : 0) << switch_id));
+  
+  this->enable();
+  this->write(states, 8);
+  this->disable();
+  
   ESP_LOGV(TAG, "Switch state: 0x%02X", states);
 }
 
