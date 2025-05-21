@@ -12,7 +12,7 @@ DEPENDENCIES = ["max4820"]
 
 MAX4820Switch = max4820_ns.class_("MAX4820Switch", switch.Switch, cg.Component)
 CONF_MAX4820_ID = "max4820_id"
-CONF_SWITCH_OUTPUT = "output"
+CONF_SWITCH_OUTPUT = "switch_output"
 
 CONFIG_SCHEMA = (
   switch.switch_schema(MAX4820Switch)
@@ -32,4 +32,4 @@ async def to_code(config):
   parent_ = await cg.get_variable(config[CONF_MAX4820_ID])
   cg.add(var.set_max4820_parent(parent_))
 
-  cg.add(var.set_switch_id(config[CONF_SWITCH_OUTPUT]))
+  cg.add(var.set_switch_output(config[CONF_SWITCH_OUTPUT]))
