@@ -33,9 +33,7 @@ CONFIG_SCHEMA = cv.Schema(
         cv.Optional(CONF_RESET_PIN): pins.gpio_output_pin_schema,
         cv.Optional(CONF_SR_COUNT, default=1): cv.int_range(min=1, max=4),
     }
-)
-.extend(cv.COMPONENT_SCHEMA)
-.extend(spi.spi_device_schema(cs_pin_required=True)),
+).extend(cv.COMPONENT_SCHEMA).extend(spi.spi_device_schema(cs_pin_required=True)),
 
 
 async def to_code(config):
