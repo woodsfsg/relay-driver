@@ -16,10 +16,18 @@ class MAX4820 : public Component,
   void dump_config() override;
   float get_setup_priority() const override;
 
+  void set_reset_pin(InternalGPIOPin *reset_pin) { this->reset_pin_ = reset_pin; }
+  void set_set_pin(InternalGPIOPin *set_pin) { this->set_pin_ = set_pin; }
+  void set_sr_num(uint8_t sr_num) { this->sr_num_ = sr_num; }
+
   bool get_switch_state(uint8_t switch_id);
   void set_switch_state(uint8_t switch_id, bool state);
 
 protected:
+  InternalGPIOPin *reset_pin_{nullptr}
+  InternalGPIOPin *set_pin_{nullptr}
+  uint8_t sr_num_{1}
+
   uint8_t states = 0;
 };
 
