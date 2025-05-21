@@ -50,7 +50,7 @@ MAX4820_SWITCH_SCHEMA = switch.switch_schema(
 ).extend(
     {
         cv.Required(CONF_MAX4820): cv.use_id(MAX4820Component),
-        cv.Required(CONF_NUMBER, default=1): cv.int_range(min=0, max=31),
+        cv.Optional(CONF_NUMBER, default=1): cv.int_range(min=0, max=31),
     }
 )
 
