@@ -20,5 +20,8 @@ void MAX4820::dump_config() {
   LOG_PIN("  CS Pin:", this->cs_);
 }
 
+bool MAX4820::get_switch_state(uint8_t switch_id);
+void MAX4820::set_switch_state(uint8_t switch_id, bool state);
+
 }  // namespace max4820
 }  // namespace esphome
