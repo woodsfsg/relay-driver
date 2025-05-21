@@ -15,7 +15,7 @@ MULTI_CONF = True
 
 max4820_ns = cg.esphome_ns.namespace("max4820")
 
-MAX4820Component = max4820_ns.class_("MAX4820Component", spi.SPIDevice, cg.Component)
+MAX4820 = max4820_ns.class_("MAX4820", cg.Component, spi.SPIDevice)
 
 CONF_MAX4820 = "max4820"
 CONF_SET_PIN = "set_pin"
@@ -24,11 +24,12 @@ CONF_SR_COUNT = "sr_count"
 
 CONFIG_SCHEMA = cv.Schema(
     {
+        cv.GenerateID(): cv.declare_id(MAX4820),
         cv.Optional(CONF_SET_PIN): pins.gpio_output_pin_schema,
         cv.Optional(CONF_RESET_PIN): pins.gpio_output_pin_schema,
         cv.Optional(CONF_SR_COUNT, default=1): cv.int_range(min=1, max=4),
     }
-).extend(cv.COMPONENT_SCHEMA).extend(spi.spi_device_schema(cs_pin_required=True)),
+).extend(spi.spi_device_schema(cs_pin_required=True)),
 
 
 async def to_code(config):
