@@ -1,4 +1,4 @@
-#include max4820.h"
+#include "max4820.h"
 
 #include "esphome/core/helpers.h"
 #include "esphome/core/log.h"
