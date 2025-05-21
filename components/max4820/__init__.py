@@ -1,17 +1,13 @@
-from esphome import pins
 import esphome.codegen as cg
-from esphome.components import spi
 import esphome.config_validation as cv
+from esphome.components import spi
 from esphome.const import CONF_ID
 
 DEPENDENCIES = ["spi"]
 AUTO_LOAD = ["switch"]
 MULTI_CONF = True
 
-CONF_MAX4820 = "max4820"
-CONF_SET_PIN = "set_pin"
-CONF_RESET_PIN = "reset_pin"
-CONF_SR_COUNT = "sr_count"
+CONF_MAX3008 = "max4820"
 
 max4820_ns = cg.esphome_ns.namespace("max4820")
 MAX4820 = max4820_ns.class_("MAX4820", cg.Component, spi.SPIDevice)
@@ -19,18 +15,11 @@ MAX4820 = max4820_ns.class_("MAX4820", cg.Component, spi.SPIDevice)
 CONFIG_SCHEMA = cv.Schema(
     {
         cv.GenerateID(): cv.declare_id(MAX4820),
-        cv.Optional(CONF_SET_PIN): pins.gpio_output_pin_schema,
-        cv.Optional(CONF_RESET_PIN): pins.gpio_output_pin_schema,
-        cv.Optional(CONF_SR_COUNT, default=1): cv.int_range(min=1, max=4),
     }
-).extend(spi.spi_device_schema(cs_pin_required=True)),
+).extend(spi.spi_device_schema(cs_pin_required=True))
 
 
 async def to_code(config):
     var = cg.new_Pvariable(config[CONF_ID])
     await cg.register_component(var, config)
     await spi.register_spi_device(var, config)
-
-    cg.add(var.set_sr_count(config[CONF_SR_COUNT]))
-    cg.add(var.set_set_pin(config[CONF_SET_PIN]))
-    cg.add(var.set_reset_pin(config[CONF_RESET_PIN]))
