@@ -8,7 +8,7 @@ namespace max4820 {
 
 static const char *const TAG = "max4820";
 
-float MAX4820::get_setup_priority() const { return setup_priority::HARDWARE; }
+float MAX4820::get_setup_priority() const { return setup_priority::BUS; }
 
 void MAX4820::setup() {
   ESP_LOGCONFIG(TAG, "Setting up max4820");
