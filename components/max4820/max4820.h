@@ -15,6 +15,9 @@ class MAX4820 : public Component,
   void setup() override;
   void dump_config() override;
   float get_setup_priority() const override;
+
+  bool get_switch_state(uint8_t switch_id);
+  void set_switch_state(uint8_t switch_id, bool state);
 };
 
 }  // namespace max4820
