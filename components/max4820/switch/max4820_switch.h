@@ -11,7 +11,7 @@ class MAX4820Switch : public switch_::Switch, public Component {
  public:
   void setup() override;
   void dump_config() override;
-  void set_switch_id(uint8_t switch_id) { this->switch_id_ = switch_id; }
+  void set_switch_output(uint8_t switch_output) { this->switch_output_ = switch_output; }
 
   void set_max4820_parent(MAX4820 *parent) { this->parent_ = parent; }
 
@@ -19,7 +19,7 @@ class MAX4820Switch : public switch_::Switch, public Component {
   void write_state(bool state) override;
 
   MAX4820 *parent_;
-  uint8_t switch_id_{0};
+  uint8_t switch_output_{0};
 };
 
 }  // namespace max4820
