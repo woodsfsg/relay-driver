@@ -32,4 +32,4 @@ async def to_code(config):
   parent_ = await cg.get_variable(config[CONF_MAX4820_ID])
   cg.add(var.set_max4820_parent(parent_))
 
-  cg.add(var.set_switch_id(config[CONF_SWITCH_OUTPUT])
+  cg.add(var.set_switch_id(config[CONF_SWITCH_OUTPUT]))
