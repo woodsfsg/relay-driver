@@ -18,6 +18,9 @@ class MAX4820 : public Component,
 
   bool get_switch_state(uint8_t switch_id);
   void set_switch_state(uint8_t switch_id, bool state);
+
+protected:
+  uint8_t states = 0;
 };
 
 }  // namespace max4820
