@@ -19,7 +19,7 @@ max4820_ns = cg.esphome_ns.namespace("max4820")
 MAX4820Component = max4820_ns.class_("MAX4820Component", spi.SPIDevice, cg.Component)
 
 MAX4820Switch = max4820_ns.class_(
-    "MAX4820Switch", cg.Switch, cg.Parented.template(MAX4820Component)
+    "MAX4820Switch", switch.Switch, cg.Parented.template(MAX4820Component)
 )
 
 CONF_MAX4820 = "max4820"
