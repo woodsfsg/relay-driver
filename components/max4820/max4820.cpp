@@ -31,7 +31,7 @@ bool MAX4820::get_switch_state(uint8_t switch_id) {
 }
 
 void MAX4820::set_switch_state(uint8_t switch_id, bool state) {
-  states = (states & (0xff ^ (0b1 << switch_id)) | ((state ? 0b1 : 0) << switch_id));
+  states = (states & (0xff ^ (0b1 << switch_id))) | (((state ? 0b1 : 0) << switch_id));
   
   this->enable();
   this->write_byte(states);
