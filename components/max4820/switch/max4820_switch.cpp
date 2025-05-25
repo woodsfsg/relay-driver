@@ -12,7 +12,7 @@ void MAX4820Switch::setup() {
 }
 
 void MAX4820Switch::write_state(bool state) {
-  ESP_LOGV(TAG, "Setting switch %u: %s", this->switch_output_, ONOFF(state));
+  ESP_LOGD(TAG, "Setting switch %u: %s", this->switch_output_, ONOFF(state));
   this->parent_->set_switch_state(this->switch_output_, state);
   this->publish_state(state);
 }
