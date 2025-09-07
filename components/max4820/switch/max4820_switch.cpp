@@ -7,8 +7,16 @@ namespace max4820 {
 static const char *const TAG = "max4820.switch";
 
 void MAX4820Switch::setup() {
-  bool state = this->parent_->get_switch_state(this->switch_output_);
-  this->publish_state(state);
+//  bool state = this->parent_->get_switch_state(this->switch_output_);
+//  this->publish_state(state);
+  // Initialize the switch from stored state (if present) or configured initial state
+  bool initial_state = this->get_initial_state_with_restore_mode().value_or(false);
+
+  if (initial_state) {
+    this->turn_on();
+  } else {
+    this->turn_off();
+  }
 }
 
 void MAX4820Switch::write_state(bool state) {
