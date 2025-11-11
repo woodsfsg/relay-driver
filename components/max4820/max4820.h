@@ -29,6 +29,8 @@ protected:
   uint8_t sr_num_{1};
 
   uint8_t states = 0;
+
+  void reset_device_();
 };
 
 }  // namespace max4820
