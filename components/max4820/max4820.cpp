@@ -18,7 +18,7 @@ void MAX4820::setup() {
   
   if (this->reset_pin_ != nullptr) {
     this->reset_pin_->setup();
-    this->reset_device();
+    this->reset_device_();
   }
   
   this->enable();
