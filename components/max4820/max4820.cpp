@@ -41,7 +41,10 @@ void MAX4820::reset_device_() {
 
 void MAX4820::dump_config() {
   ESP_LOGCONFIG(TAG, "MAX4820:");
-  LOG_PIN("  CS Pin:", this->cs_);
+  LOG_PIN("   CS Pin:", this->cs_);
+  if (this->reset_pin_ != nullptr) {
+      LOG_PIN("Reset Pin:", this->reset_pin_);
+  }
 }
 
 bool MAX4820::get_switch_state(uint8_t switch_id) {
